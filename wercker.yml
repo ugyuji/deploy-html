@@ -1,4 +1,4 @@
-box: wercker/ruby
+box: dock0/ssh
 
 build:
   steps:
@@ -40,6 +40,9 @@ deploy:
             code: |
               ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-a "cd /var/www/vhosts/ugyuji.com/httpdocs && git pull origin master"
     after-steps:
-        - wantedly/pretty-slack-notify:
-            webhook_url: $SLACK_WEBHOOK_URL
+    after-steps:
+        - slack-notifier:
+            url: $SLACK_WEBHOOK_URL
             channel: deploy_test
+            username: wercker
+            branch: master
