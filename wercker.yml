@@ -39,4 +39,4 @@ deploy:
         - script:
             name: transfer application
             code: |
-              ssh ec2-a "cd /var/www/vhosts/ugyuji.com/httpdocs && git pull origin master"
+              ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-a "cd /var/www/vhosts/ugyuji.com/httpdocs && git pull origin master"
