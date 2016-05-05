@@ -1,0 +1,32 @@
+box: dock0/ssh
+
+# ビルドフェーズ。ここでwerckerの環境を構築します。
+build:
+  steps:
+    - script:
+        name: echo
+        code: |
+          echo "Build Step"
+
+# デプロイフェーズ。ここでさくらサーバにデプロイします。
+deploy:
+  steps:
+    # 一時的に使用するフォルダを作成
+    - mktemp:
+        envvar: PRIVATEKEY_PATH
+
+    # 作成したフォルダに4.で指定したSSHキーが記述されたファイルを作成
+    - create-file:
+        name: write key
+        filename: $PRIVATEKEY_PATH
+
+        # $[4.の「Environment variable」で入力した値]_PRIVATE
+        content: $UGYUJI_KEY_PRIVATE
+        overwrite: true
+        hide-from-log: true
+
+    # コマンドを実行。今回はsshでデプロイ先に接続し、git pullしています。
+    - script:
+        name: transfer application
+        code: |
+          ssh -p **** -i $PRIVATEKEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@54.92.117.157 "cd /var/www/vhosts/ugyuji.com/httpdocs && git pull origin master"
