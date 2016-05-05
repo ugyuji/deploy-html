@@ -29,4 +29,4 @@ deploy:
     - script:
         name: transfer application
         code: |
-          ssh -p **** -i $PRIVATEKEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@54.92.117.157 "cd /var/www/vhosts/ugyuji.com/httpdocs && git pull origin master"
+          ssh -i $PRIVATEKEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@54.92.117.157 "cd /var/www/vhosts/ugyuji.com/httpdocs && git pull origin master"
