@@ -1,4 +1,4 @@
-box: dock0/ssh
+box: wercker/ruby
 
 build:
   steps:
@@ -9,7 +9,6 @@ build:
 
 # デプロイフェーズ。ここでさくらサーバにデプロイします。
 deploy:
-
     steps:
         - script:
             name: make .ssh directory
