@@ -11,7 +11,7 @@ build:
 deploy:
     steps:
         - script:
-            name: make .ssh directoryc
+            name: make .ssh directory
             code: mkdir -p "$HOME/.ssh"
         - create-file:
             name: write ssh config
