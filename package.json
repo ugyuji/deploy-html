@@ -1,0 +1,22 @@
+{
+  "name": "deploy-html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ugyuji/deploy-html.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ugyuji/deploy-html/issues"
+  },
+  "homepage": "https://github.com/ugyuji/deploy-html#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

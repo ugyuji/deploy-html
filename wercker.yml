@@ -39,6 +39,10 @@ deploy:
             name: transfer application
             code: |
               ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-a "cd /var/www/vhosts/ugyuji.com/httpdocs && git pull origin master"
+        - script:
+            name: install package
+            code: |
+              ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-a "npm install"
     after-steps:
         - slack-notifier:
             url: $SLACK_WEBHOOK_URL
